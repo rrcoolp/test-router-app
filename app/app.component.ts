@@ -3,6 +3,7 @@ import {NS_ROUTER_DIRECTIVES} from "nativescript-angular/router";
 import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {APP_ROUTER_PROVIDERS} from "./app.routes";
 import {Location, LocationStrategy} from "@angular/common";
+import {app_globals} from "./utils/globals";
 
 @Component({
 	selector: "main",
@@ -15,37 +16,37 @@ export class AppComponent implements OnInit {
 	history: any = [];
 	pushState: any;
 
-	constructor(public _router: Router, private _changeDetectionRef: ChangeDetectorRef,private _Location: Location, private _LocationStrategy: LocationStrategy) {
+	constructor(public _router: Router, private _changeDetectionRef: ChangeDetectorRef, private _Location: Location, private _LocationStrategy: LocationStrategy, private _app_globals: app_globals) {
 		this._changeDetectionRef = _changeDetectionRef;
 		this._LocationStrategy = _LocationStrategy;
 	}
 	ngOnInit() {
+		this._app_globals.navigateTo$.subscribe(val => {
+			console.log("SUBSCRIBED NAVIATE TO:" + val);
+			this.navigateTo(val);
+		});
 	}
 
-	toggleDrawerState() { 
-		console.log("Tap Drawer");		
+	toggleDrawerState() {
+		console.log("Tap Drawer");
 	}
 
 
 	goBack() {
 		this._LocationStrategy.back();
 	}
-
-	GotoTestPage2() { 
-		console.log("GotoTestPage2");				
-		this._router.navigate(["testpage2", "PAGE_2"]).then(() => { 
-			alert("Route Completed to PAGE 2");
+	navigateTo(page) {
+		console.log("GotoTestPage"+page);
+		this._router.navigate(["testpage"+page, "PAGE"+page]).then(() => {
+			alert("Route Completed to PAGE"+page);
 		});
 	}
 
-	GotoTestPage1() { 
-		console.log("GotoTestPage1");				
-		this._router.navigate(["testpage", "PAGE_1"]).then(() => { 
-			alert("Route Completed to PAGE 1");
-		});
-	}	
-	
-	navigateBasket() {
-		console.log("Tap Basket");
+	GotoTestPage2() {
+		this.navigateTo("2");
+	}
+
+	GotoTestPage1() {
+		this.navigateTo("");
 	}
 }

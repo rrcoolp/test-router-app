@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
+import {app_globals} from "../../utils/globals";
 
 @Component({
 	selector: "testpage",
@@ -10,8 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TestPage implements OnInit {
     sub;
 	param:string;
-    constructor(private route: ActivatedRoute) {
-
+    constructor(private route: ActivatedRoute, private _app_globals: app_globals) {
     }
 	ngOnInit() {
 		this.sub = this.route.params.subscribe(params => {
@@ -22,6 +22,7 @@ export class TestPage implements OnInit {
 	gotoPage2() {
 		console.log(this.param);			
 		console.log("TAP: gotoPage2");
+		this._app_globals.DespatchNavigateTo("2");
 	}
 
 
