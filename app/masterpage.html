@@ -1,0 +1,31 @@
+<StackLayout>
+	<ActionBar style="background-color:#000;">
+		<NavigationButton text="Menu" icon="res://ic_menu" (tap)="toggleDrawerState()"></NavigationButton>
+		<ios>
+			<ActionItem icon="res://ic_menu" (tap)="toggleDrawerState()" ios.position="left"></ActionItem>
+			<ActionItem icon="res://ic_arrow_back" (tap)="toggleDrawerState()" ios.position="left"></ActionItem>
+		</ios>
+		<ActionItem color="white" ios.position="right">
+			<Label text="Basket" class="actionRHS" (tap)="navigateBasket()"></Label>
+		</ActionItem>
+		<ActionBar.titleView>
+			<!-- TODO: We should be able to center an image horizontally in android without using GridLayout -->
+			<GridLayout>
+				<Image col="0" src="res://ic_arrow_back" (tap)="goBack()" horizontalAlignment="left" height="20" [visibility]="showBackButton ? 'visible' : 'collapsed'"></Image>
+				<!--<Image col="1" src="~/images/logo@2x.png" height="30" horizontalAlignment="center" class="action-image" (tap)="gotoHomepage()"></Image>-->
+			</GridLayout>
+		</ActionBar.titleView>
+	</ActionBar>
+
+	<StackLayout>
+		<button text="Goto Page 1" (tap)="GotoTestPage1()"></button>
+		<button text="Goto Page 2" (tap)="GotoTestPage2()"></button>
+		<StackLayout class="innerPage">
+			<router-outlet></router-outlet>
+		</StackLayout>
+
+		<!--<GridLayout rows="auto, auto" verticalAlignment="center">
+    <router-outlet></router-outlet>
+  </GridLayout>  -->
+	</StackLayout>
+</StackLayout>
