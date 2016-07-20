@@ -33,14 +33,14 @@ var AppComponent = (function () {
     AppComponent.prototype.navigateTo = function (page) {
         console.log("GotoTestPage" + page);
         this._router.navigate(["testpage" + page, "PAGE" + page]).then(function () {
-            alert("Route Completed to PAGE" + page);
+            alert("Route Completed but see content didn't change to PAGE" + page);
         });
     };
     AppComponent.prototype.GotoTestPage2 = function () {
         this.navigateTo("2");
     };
     AppComponent.prototype.GotoTestPage1 = function () {
-        this.navigateTo("");
+        this.navigateTo("1");
     };
     AppComponent = __decorate([
         core_1.Component({

@@ -38,7 +38,8 @@ export class AppComponent implements OnInit {
 	navigateTo(page) {
 		console.log("GotoTestPage"+page);
 		this._router.navigate(["testpage"+page, "PAGE"+page]).then(() => {
-			alert("Route Completed to PAGE"+page);
+			alert("Route Completed but see content didn't change to PAGE"+page);
+			
 		});
 	}
 
@@ -47,6 +48,6 @@ export class AppComponent implements OnInit {
 	}
 
 	GotoTestPage1() {
-		this.navigateTo("");
+		this.navigateTo("1");
 	}
 }
