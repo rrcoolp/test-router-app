@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 	navigateTo(page) {
 		console.log("GotoTestPage"+page);
 		this._router.navigate(["testpage"+page, "PAGE"+page]).then(() => {
-			alert("Route Completed but see content didn't change to PAGE"+page);
+			console.log("Route Completed but check to see if content has updated for respective PAGE:"+page + " - especially after first click");
 			
 		});
 	}
