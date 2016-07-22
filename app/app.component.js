@@ -32,8 +32,8 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.navigateTo = function (page) {
         console.log("GotoTestPage" + page);
-        this._router.navigate(["testpage" + page, "PAGE" + page]).then(function () {
-            alert("Route Completed but see content didn't change to PAGE" + page);
+        this._router.navigate(["/testpage" + page, "PAGE" + page]).then(function () {
+            console.log("Route Completed but check to see if content has updated for respective PAGE:" + page + " - especially after first click");
         });
     };
     AppComponent.prototype.GotoTestPage2 = function () {
